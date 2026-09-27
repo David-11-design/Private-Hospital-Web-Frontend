@@ -1,0 +1,23 @@
+<div class="container-auth">
+    <div class="container-alert" *ngIf="alertMessage">
+        <p>{{ message }}</p>
+    </div>
+
+    <div class="container-form">
+        <form #authForm="ngForm" (ngSubmit)="authComponent()">
+            <div class="container-username">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" [(ngModel)]="username">
+            </div>
+
+            <div class="container-password">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" [(ngModel)]="password">
+            </div>
+
+            <div class="container-button">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
