@@ -23,7 +23,8 @@
 
                     <div class="container-password">
                         <app-label text="Password" for="password"></app-label>
-
+                        <app-label text="This field is required" class="fieldsEmpty"
+                            *ngIf="passwordRequired()"></app-label>
                         <div class="password-field">
                             <app-input class="input-password" placeholder="******"
                                 [type]="showPassword ? 'text' : 'password'" id="password" name="password"
