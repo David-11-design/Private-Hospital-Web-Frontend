@@ -10,9 +10,9 @@ import { AuthResponse } from '../response/index.response';
 export class AuthService{
     constructor(private readonly http: HttpClient){}
 
-    private url = 'auth';
+    private url = 'http://localhost:3000/auth';
 
-    postAuthService(dto: AuthRequest): Observable<AuthResponse>{
-        return this.http.post<AuthResponse>(`${this.url}/login`, dto);
+    postAuthService(dto: AuthRequest) {
+        return this.http.post(`${this.url}/login`, dto);
     }
 }

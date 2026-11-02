@@ -1,23 +1,51 @@
 <div class="container-auth">
-    <div class="container-alert" *ngIf="alertMessage">
+    <div class="container-alert" *ngIf="alertMessage()">
+        <!--<div class="containerRemoveAlert"><button class="removeAlert">X</button></div>-->
         <p>{{ message }}</p>
     </div>
 
-    <div class="container-form">
-        <form #authForm="ngForm" (ngSubmit)="authComponent()">
-            <div class="container-username">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" [(ngModel)]="username">
+    <div class="container-main">
+        <div class="container-formd">
+            <div class="container-Text">
+                <h1>Login</h1>
+                <p>Enter your username and password to access the system.</p>
             </div>
 
-            <div class="container-password">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" [(ngModel)]="password">
+            <div class="container-form">
+                <form #authForm="ngForm" (ngSubmit)="authComponent()">
+                    <div class="container-username">
+                        <app-label text="Email" for="username"></app-label>
+                        <app-label text="This field is required" class="fieldsEmpty"
+                            *ngIf="usernameRequired()"></app-label>
+                        <app-input type="text" placeholder="example@.com.ec" id="username" name="username"
+                            (input)="isAuthFieldActive($event)" [(value)]="username" class="input-username"></app-input>
+                    </div>
+
+                    <div class="container-password">
+                        <app-label text="Password" for="password"></app-label>
+
+                        <div class="password-field">
+                            <app-input class="input-password" placeholder="******"
+                                [type]="showPassword ? 'text' : 'password'" id="password" name="password"
+                                (input)="isAuthFieldActive($event)" [(value)]="password">
+                            </app-input>
+
+                            <button *ngIf="password !== ''" type="button" class="button-showPassword"
+                                (click)="showPasswordTaggle()">
+                                *
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="container-button"><button type="submit">Sing in</button></div>
+                </form>
             </div>
 
-            <div class="container-button">
-                <button type="submit">Login</button>
-            </div>
-        </form>
+        </div>
+        <div class="container-image">
+            <img src="" alt="">
+        </div>
     </div>
+
+
 </div>
